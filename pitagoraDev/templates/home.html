@@ -1,13 +1,350 @@
-<html lang="en">
+{% load static %}
+<!DOCTYPE html>
+<html>
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Studio Pitagora</title>
+  <title>Studio pitagora</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- <link rel="stylesheet" href="{% static 'css/style_pitagora.css' %}"> -->
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      /* overflow: hidden; */
+    }
+
+    #video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      display: block;
+    }
+
+    #video-section {
+      width: 100%;
+      height: 100vh;
+      /* Occupa l'intera viewport */
+      position: relative;
+      overflow: hidden;
+    }
+
+    #orange-section {
+      margin-top: 150px;
+      width: 100%;
+      height: 100vh;
+    }
+
+    #orange-section {
+      margin-top: 550px;
+      width: 100%;
+      height: 100vh;
+      padding-left: 15%;
+      /* o margin-left: 15%; */
+      box-sizing: border-box;
+      /* per includere il padding nella larghezza */
+    }
+
+    .navbar {
+      left: 50%;
+      transform: translateX(-50%);
+      height: 70px;
+      margin: 40px auto 0;
+      width: 70%;
+      background-color: white;
+      color: #000;
+      padding: 0 30px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      z-index: 10;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    .logo {
+      justify-self: start;
+    }
+
+    .logo img {
+      height: 50px;
+      border-radius: 50px;
+      object-fit: cover;
+    }
+
+    .links {
+      display: flex;
+      gap: 50px;
+      font-weight: bold;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .links a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      color: #4ba2a6;
+    }
+
+    .links a.active {
+      color: #4ba2a6;
+    }
+
+    .button-right button {
+      background-color: #4ba2a6;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button-right button:hover {
+      background-color: #3b8d91;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      padding: 10px;
+      border-radius: 10px;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      min-width: 150px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 5px;
+      color: black;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #555;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+
+    #blue-section {
+      width: 100%;
+      height: 100vh;
+      background-color: #8DADA9;
+      padding: 40px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .blue-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      width: 100%;
+      max-width: 1400px;
+      height: 100%;
+      align-items: center;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .column img {
+      width: 100%;
+      max-width: 100%;
+      height: 48%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .text-column {
+      color: white;
+      padding: 20px;
+      text-align: left;
+      justify-content: center;
+    }
+
+    .image-box {
+      width: 100%;
+      height: 48%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 85%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      /* transizione fluida */
+    }
+
+    .image-box img:hover {
+      transform: translateY(-20px);
+      /* spostamento verso l’alto */
+    }
+
+    .caption {
+      margin-top: 8px;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      /* QUESTO FA LA MAGIA */
+      align-items: center;
+    }
+  </style>
 </head>
 
 <body>
-  <h3>Ciao bro</h3>
+  <section id="video-section">
+    <video id="video-background" autoplay muted loop playsinline>
+      <source src="{% static 'video/background.mp4' %}" type="video/mp4">
+    </video>
+    <div class="navbar">
+      <div class="logo">
+        <a href="/"><img src="{% static 'img/logosenzasfondo.png' %}" alt="Studio Pitagora"></a>
+      </div>
+      <div class="links">
+        <a href="#" class="active">Home</a>
+        <a href="#">Chi siamo</a>
+        <div class="dropdown">
+          <a href="#">Servizi <i class="bi bi-chevron-down"></i></a>
+          <div class="dropdown-content">
+            <a href="#">Logopedia</a>
+            <a href="#">Psicoterapia</a>
+            <a href="#">Psicologia dell'età evolutiva</a>
+            <a href="#">TNPEE</a>
+            <a href="#">Osteopatia D.O. e Chinesiologia</a>
+            <a href="#">Massoterapia</a>
+          </div>
+        </div>
+        <a href="#">Contatti</a>
+      </div>
+      <div class="button-right">
+        <button>Prenota <i class="bi bi-arrow-right-circle-fill"></i></button>
+      </div>
+    </div>
+    <section id="orange-section">
+      <h1 style="font-size: 100px; color: white;">Studio Pitagora</h1>
+      <h1 style="font-size: 20px; color: white;">Servizi rieducativi e riabilitativi</h1>
+    </section>
+  </section>
+
+  <section id="blue-section">
+    <div class="blue-grid">
+      <div class="column text-column">
+        <h2>I nostri servizi</h2>
+        <p>Siamo uno studio SWAG</p>
+      </div>
+      <div class="column">
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
+          <div class="caption">
+            <span>Logopedia</span>
+            <i class="bi bi-arrow-right-circle"></i>
+          </div>
+        </div>
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img2">
+          <div class="caption">
+            <span>Psicoterapia</span>
+            <i class="bi bi-arrow-right-circle"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
+          <div class="caption">
+            <span>Psicologia dell'età evolutiva</span>
+            <i class="bi bi-arrow-right-circle"></i>
+          </div>
+        </div>
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img2">
+          <div class="caption">
+            <span>TNPEE</span>
+            <i class="bi bi-arrow-right-circle"></i>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
+          <div class="caption">
+            <span>Osteopatia D.O. e chinesiologia</span>
+            <i class="bi bi-arrow-right-circle"></i>
+          </div>
+        </div>
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img2">
+          <div class="caption">
+            <span>Massoterapia</span>
+            <i class="bi bi-arrow-right-circle"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
 
 </body>
 
