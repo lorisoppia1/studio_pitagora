@@ -1,0 +1,6 @@
+from django.urls import path
+from pitagoraDev.views import *
+
+urlpatterns = [
+  path('', Home.as_view())
+] 
