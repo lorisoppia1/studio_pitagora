@@ -9,13 +9,21 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- <link rel="stylesheet" href="{% static 'css/style_pitagora.css' %}"> -->
 
   <style>
+    /* @font-face {
+      font-family: "ItsRonda";
+      src: url("{% static 'fonts/its_ronda_font.otf' %}") format("opentype");
+      font-weight: normal;
+      font-style: normal;
+    } */
+
     body {
       margin: 0;
       padding: 0;
       /* overflow: hidden; */
+      /* font-family: "ItsRonda", sans-serif; */
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
 
     #video-background {
@@ -38,19 +46,11 @@
     }
 
     #orange-section {
-      margin-top: 150px;
-      width: 100%;
-      height: 100vh;
-    }
-
-    #orange-section {
       margin-top: 550px;
       width: 100%;
       height: 100vh;
       padding-left: 15%;
-      /* o margin-left: 15%; */
       box-sizing: border-box;
-      /* per includere il padding nella larghezza */
     }
 
     .navbar {
@@ -168,7 +168,7 @@
     #blue-section {
       width: 100%;
       height: 100vh;
-      background-color: #8DADA9;
+      background-color: #8dada936;
       padding: 40px;
       box-sizing: border-box;
       display: flex;
@@ -184,6 +184,17 @@
       max-width: 1400px;
       height: 100%;
       align-items: center;
+    }
+
+    #yellow-section {
+      width: 100%;
+      height: 100vh;
+      background-color: white;
+      padding: 40px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .column {
@@ -204,10 +215,9 @@
     }
 
     .text-column {
-      color: white;
+      color: black;
       padding: 20px;
       text-align: left;
-      justify-content: center;
     }
 
     .image-box {
@@ -226,24 +236,100 @@
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
-      /* transizione fluida */
     }
 
     .image-box img:hover {
       transform: translateY(-20px);
-      /* spostamento verso l’alto */
     }
 
     .caption {
       margin-top: 8px;
-      color: white;
       font-weight: bold;
       font-size: 16px;
       width: 100%;
       display: flex;
       justify-content: space-between;
-      /* QUESTO FA LA MAGIA */
       align-items: center;
+    }
+
+    #yellow-section {
+      background-color: lightsalmon;
+      padding: 0;
+    }
+
+    .yellow-columns {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+
+    .yellow-left,
+    .yellow-right {
+      flex: 1;
+      padding: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .yellow-image img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cerchi-container {
+      display: flex;
+      gap: 5px;
+    }
+
+    .cerchio {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    @keyframes bounceUp {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* Quando il container è in hover, animiamo i cerchi con delay sfalsato */
+    .cerchi-container:hover .cerchio {
+      animation: bounceUp 0.4s ease-in-out;
+    }
+
+    .cerchi-container:hover .cerchio:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .cerchi-container:hover .cerchio:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+
+    .cerchi-container:hover .cerchio:nth-child(3) {
+      animation-delay: 0.2s;
+    }
+
+    .cerchi-container:hover .cerchio:nth-child(4) {
+      animation-delay: 0.3s;
+    }
+
+    .triangolo {
+      width: 100px;
+      height: 100px;
+      background-color: #87B5C4;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     }
   </style>
 </head>
@@ -253,7 +339,7 @@
     <video id="video-background" autoplay muted loop playsinline>
       <source src="{% static 'video/background.mp4' %}" type="video/mp4">
     </video>
-    <div class="navbar">
+    <div class="navbar text-uppercase">
       <div class="logo">
         <a href="/"><img src="{% static 'img/logosenzasfondo.png' %}" alt="Studio Pitagora"></a>
       </div>
@@ -265,7 +351,7 @@
           <div class="dropdown-content">
             <a href="#">Logopedia</a>
             <a href="#">Psicoterapia</a>
-            <a href="#">Psicologia dell'età evolutiva</a>
+            <a href="#">Psicologia dell'età evolutiva / Tutor DSA</a>
             <a href="#">TNPEE</a>
             <a href="#">Osteopatia D.O. e Chinesiologia</a>
             <a href="#">Massoterapia</a>
@@ -274,77 +360,267 @@
         <a href="#">Contatti</a>
       </div>
       <div class="button-right">
-        <button>Prenota <i class="bi bi-arrow-right-circle-fill"></i></button>
+        <button onclick="window.location.href='mailto:alessandro@logopedistarigamonti.com'">PRENOTA <i
+            class="bi bi-arrow-right-circle-fill"></i></button>
       </div>
     </div>
     <section id="orange-section">
       <h1 style="font-size: 100px; color: white;">Studio Pitagora</h1>
-      <h1 style="font-size: 20px; color: white;">Servizi rieducativi e riabilitativi</h1>
+      <h1 style="font-size: 40px; color: white;">Servizi rieducativi e riabilitativi</h1>
     </section>
   </section>
 
-  <section id="blue-section">
-    <div class="blue-grid">
-      <div class="column text-column">
-        <h2>I nostri servizi</h2>
-        <p>Siamo uno studio SWAG</p>
-      </div>
-      <div class="column">
-        <div class="image-box">
-          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
-          <div class="caption">
-            <span>Logopedia</span>
-            <i class="bi bi-arrow-right-circle"></i>
+  <section id="yellow-section" style="background-color: #C3D1CA;">
+    <div class="yellow-columns">
+      <div class="yellow-left">
+        <div class="yellow-text">
+          <h1 style="font-weight: bold;">Benvenuti a Studio Pitagora</h1>
+          <h3 style="font-weight: bold;">Il nostro approccio</h3>
+          <div class="cerchi-container">
+            <span class="cerchio" style="background-color: #87B5C4;"></span>
+            <span class="cerchio" style="background-color: #C44325;"></span>
+            <span class="cerchio" style="background-color: #F8B451;"></span>
+            <span class="cerchio" style="background-color: #000000;"></span>
           </div>
-        </div>
-        <div class="image-box">
-          <img src="{% static 'img/imm_1.jpeg' %}" alt="img2">
-          <div class="caption">
-            <span>Psicoterapia</span>
-            <i class="bi bi-arrow-right-circle"></i>
-          </div>
+          <p>A Studio Pitagora mettiamo al centro la persona, creando un percorso di supporto clinico che nasce
+            dall'ascolto attento e dalla fiducia reciproca.
+            Crediamo che ogni difficoltà, sia essa di natura logopedica, posturale, fisica o emotiva, vada affrontata
+            con un approccio integrato e su misura.
+            <br><br>
+            Accogliamo bambini, adolescenti, adulti e famiglie offrendo consulenze e trattamenti pensati per
+            accompagnare ogni fase della vita, favorendo sviluppo, equilibrio e benessere.
+            <br><br>
+            Il nostro team multidisciplinare, composto da logopedisti, osteopati, psicologi, TNPEE e altri
+            professionisti, lavora in sinergia per costruire interventi personalizzati che rispondano alle specifiche
+            esigenze di ciascun paziente, promuovendo un miglioramento concreto e duratura dello stato di salute.
+          </p>
         </div>
       </div>
+      <div class="yellow-right">
+        <div class="yellow-image">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 d-flex flex-column mt-3">
+                <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" class="my-3" style="border-radius: 12px;">
+                <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" style="border-radius: 12px;">
+              </div>
 
-      <div class="column">
-        <div class="image-box">
-          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
-          <div class="caption">
-            <span>Psicologia dell'età evolutiva</span>
-            <i class="bi bi-arrow-right-circle"></i>
-          </div>
-        </div>
-        <div class="image-box">
-          <img src="{% static 'img/imm_1.jpeg' %}" alt="img2">
-          <div class="caption">
-            <span>TNPEE</span>
-            <i class="bi bi-arrow-right-circle"></i>
+              <div class="col-md-6 d-flex flex-column">
+                <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" style="border-radius: 12px;">
+                <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" class="my-3" style="border-radius: 12px;">
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="column">
-        <div class="image-box">
-          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
-          <div class="caption">
-            <span>Osteopatia D.O. e chinesiologia</span>
-            <i class="bi bi-arrow-right-circle"></i>
-          </div>
-        </div>
-        <div class="image-box">
-          <img src="{% static 'img/imm_1.jpeg' %}" alt="img2">
-          <div class="caption">
-            <span>Massoterapia</span>
-            <i class="bi bi-arrow-right-circle"></i>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
+  <!-- <section id="yellow-section" style="background-color: #F3EBE9;">
+    <div class="yellow-columns">
+      <div class="yellow-left">
+        <div class="yellow-text">
+          <h1 style="font-weight: bold;">BENVENUTI</h1>
+          <h1 style="font-weight: bold;">Sono Alessandro Rigamonti</h1>
+          <h3 style="font-weight: bold;">Logopedista e titolare di Studio Pitagora</h3>
+          <div class="cerchi-container">
+            <span class="cerchio" style="background-color: #87B5C4;"></span>
+            <span class="cerchio" style="background-color: #C44325;"></span>
+            <span class="cerchio" style="background-color: #F8B451;"></span>
+            <span class="cerchio" style="background-color: #000000;"></span>
+          </div>
+          <p>Mi presento: sono laureato in Logopedia dal 2011. Dopo più di 10 anni di esperienza lavorativa sia in
+            libera professione che presso il Sistema Sanitario Nazionale ho deciso di creare questo spazio di lavoro che
+            prende il nome di Studio Pitagora nel dicembre 2023. <br>
+            Fin da subito si sono aggiunte al mio percorso altre
+            figure professionali che hanno trasformato il mio ambulatorio di logopedia in una realtà multidisciplinare
+            interconnessa. Attualmente lo studio ha raggiunto una configurazione più matura con l'aggiunta di servizi
+            integrativi per la tutela del benessere e della salute dei nostri pazienti.
+          </p>
+        </div>
+      </div>
+      <div class="yellow-right">
+        <div class="yellow-image">
+          <img src="{% static 'img/foto_ale.png' %}" alt="img1">
+        </div>
+      </div>
+    </div>
+  </section> -->
 
+  <!-- <section id="yellow-section" style="background-color: #C3D1CA;">
+    <div class="yellow-columns">
+      <div class="yellow-right">
+        <div class="yellow-image">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
+        </div>
+      </div>
+      <div class="yellow-left">
+        <div class="yellow-text">
+          <h2 style="font-weight: bold;">Formazione e Progetti</h2>
+          <div class="cerchi-container">
+            <span class="cerchio" style="background-color: #87B5C4;"></span>
+            <span class="cerchio" style="background-color: #C44325;"></span>
+            <span class="cerchio" style="background-color: #F8B451;"></span>
+            <span class="cerchio" style="background-color: #000000;"></span>
+          </div>
+          <p>Studio Alke è attivamente impegnato in progetti educativi nelle scuole dell’infanzia e primarie, oltre a
+            percorsi di formazione dedicati a famiglie, insegnanti e professionisti. L’obiettivo è rispondere
+            concretamente ai bisogni del territorio e favorire una crescita condivisa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section> -->
 
+  <section id="blue-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-3 d-flex flex-column">
+          <h2 style="font-weight: bold;">I nostri servizi <br>
+            <div class="cerchi-container">
+              <span class="cerchio" style="background-color: #87B5C4;"></span>
+              <span class="cerchio" style="background-color: #C44325;"></span>
+              <span class="cerchio" style="background-color: #F8B451;"></span>
+              <span class="cerchio" style="background-color: #000000;"></span>
+            </div>
+          </h2>
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" class="my-3" style="border-radius: 12px;">
+        </div>
+        <div class="col-6 col-md-3 d-flex flex-column">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" class="my-3" style="border-radius: 12px;">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" class="my-3" style="border-radius: 12px;">
+        </div>
+        <div class="col-6 col-md-3 d-flex flex-column">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" class="my-3" style="border-radius: 12px;">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" class="my-3" style="border-radius: 12px;">
+        </div>
+        <div class="col-6 col-md-3 d-flex flex-column">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" class="my-3" style="border-radius: 12px;">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1" class="my-3" style="border-radius: 12px;">
+        </div>
+      </div>
+    </div>
+    <!-- <div class="column text-column">
+        <h2 style="font-weight: bold;">I nostri servizi <br>
+          <div class="cerchi-container">
+            <span class="cerchio" style="background-color: #87B5C4;"></span>
+            <span class="cerchio" style="background-color: #C44325;"></span>
+            <span class="cerchio" style="background-color: #F8B451;"></span>
+            <span class="cerchio" style="background-color: #000000;"></span>
+          </div>
+        </h2>
+      </div>
+      <div class="column">
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
+          <div class="caption">
+            <span style="font-size: 16px;">Logopedia</span>
+            <i class="bi bi-arrow-right fs-3"></i>
+          </div>
+        </div>
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img2">
+          <div class="caption">
+            <span style="font-size: 16px;">Psicoterapia</span>
+            <i class="bi bi-arrow-right fs-3"></i>
+          </div>
+        </div>
+      </div> -->
+    <!-- 
+      <div class="column">
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
+          <div class="caption">
+            <span style="font-size: 16px;">Psicologia dell'età evolutiva</span>
+            <i class="bi bi-arrow-right fs-3"></i>
+          </div>
+        </div>
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img2">
+          <div class="caption">
+            <span style="font-size: 16px;">TNPEE</span>
+            <i class="bi bi-arrow-right fs-3"></i>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
+          <div class="caption">
+            <span style="font-size: 16px;">Osteopatia D.O. e chinesiologia</span>
+            <i class="bi bi-arrow-right fs-3"></i>
+          </div>
+        </div>
+        <div class="image-box">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img2">
+          <div class="caption">
+            <span style="font-size: 16px;">Massoterapia</span>
+            <i class="bi bi-arrow-right fs-3"></i>
+          </div>
+        </div>
+      </div> -->
 
+  </section>
+
+  <section id="yellow-section">
+    <div class="yellow-columns">
+      <div class="yellow-left">
+        <div class="yellow-text">
+          <h4 style="color: #3b8d91;">Perchè sceglierci</h4>
+          <h2 style="font-weight: bold;">Studio Pitagora - Servizi Integrati per il benessere e lo sviluppo della
+            persona</h2>
+          <div class="cerchi-container">
+            <span class="cerchio" style="background-color: #87B5C4;"></span>
+            <span class="cerchio" style="background-color: #C44325;"></span>
+            <span class="cerchio" style="background-color: #F8B451;"></span>
+            <span class="cerchio" style="background-color: #000000;"></span>
+          </div>
+          <p>
+          <p style="font-weight: bold;">Studio Pitagora</p> è un centro dedicato alla presa in carico di bisogni
+          complessi in ambito evolutivo, educativo, clinico e relazionale. Accogliamo bambini, adolescenti, adulti e
+          nuclei familiari, offrendo interventi mirati attraverso un approccio multidisciplinare fondato
+          sull'ascolto, sulla competenza e sulla costruzione di un'alleanza terapeutica. <br>Il nostro team di
+          professionisti elabora percorsi personalizzati, con l'obiettivo di promuovere il benessere globale della
+          persona e sostenere i contesti educativi e sociali in cui è inserita.
+          </p>
+          <br>
+          <div class="button-right">
+            <button>La nostra missione</button>
+          </div>
+        </div>
+      </div>
+      <div class="yellow-right">
+        <div class="yellow-image">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="yellow-section" style="background-color: greenyellow;">
+    <div class="yellow-columns">
+      <div class="yellow-right">
+        <div class="yellow-image">
+          <img src="{% static 'img/imm_1.jpeg' %}" alt="img1">
+        </div>
+      </div>
+      <div class="yellow-left">
+        <div class="yellow-text">
+          <h2 style="font-weight: bold;">Formazione e Progetti</h2>
+          <div class="cerchi-container">
+            <span class="cerchio" style="background-color: #87B5C4;"></span>
+            <span class="cerchio" style="background-color: #C44325;"></span>
+            <span class="cerchio" style="background-color: #F8B451;"></span>
+            <span class="cerchio" style="background-color: #000000;"></span>
+          </div>
+          <p>Studio Alke è attivamente impegnato in progetti educativi nelle scuole dell’infanzia e primarie, oltre a
+            percorsi di formazione dedicati a famiglie, insegnanti e professionisti. L’obiettivo è rispondere
+            concretamente ai bisogni del territorio e favorire una crescita condivisa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </body>
 
