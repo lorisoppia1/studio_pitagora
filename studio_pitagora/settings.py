@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-sjm)rwt3m#x%xn(*$6991)vr(83jwz6!2_b2*!fbjl(*i5evd0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -121,6 +122,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')   # Dove mettere i file statici raccolti (per produzione)
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # Cartelle aggiuntive di static (per sviluppo)
+STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # MEDIA FILES (file caricati dagli utenti: immagini, video, ecc)
 MEDIA_URL = '/media/'
