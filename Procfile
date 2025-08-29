@@ -1,1 +1,1 @@
-web: gunicorn studio_pitagora.wsgi --bind 0.0.0.0:$PORT --log-file -
+web: gunicorn studio_pitagora.wsgi --bind 0.0.0.0:$PORT --access-logfile - --error-logfile -
