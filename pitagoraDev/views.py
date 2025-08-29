@@ -15,6 +15,37 @@ class Contatti(APIView):
 
   def get(self, request):
     return render(request, 'contatti.html')
+
+class Logopedia(APIView):
+
+  def get(self, request):
+    return render(request, 'logopedia.html')
+
+class Psicoterapia(APIView):
+
+  def get(self, request):
+    return render(request, 'psicoterapia.html')
+
+class Psicologia(APIView):
+
+  def get(self, request):
+    return render(request, 'psicologia.html')
+
+class TNPEE(APIView):
+
+  def get(self, request):
+    return render(request, 'tnpee.html')
+
+class Osteopatia(APIView):
+
+  def get(self, request):
+    return render(request, 'osteopatia.html')
+
+class Massoterapia(APIView):
+
+  def get(self, request):
+    return render(request, 'massoterapia.html')
+ 
   
 
 # COSE DA FARE
