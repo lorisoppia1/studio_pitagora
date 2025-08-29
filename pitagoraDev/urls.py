@@ -3,5 +3,6 @@ from pitagoraDev.views import *
 
 urlpatterns = [
   path('', Home.as_view()),
-  path('chi-siamo', ChiSiamo.as_view())
+  path('chi-siamo', ChiSiamo.as_view()),
+  path('contatti', Contatti.as_view())
 ] 
